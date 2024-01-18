@@ -95,7 +95,7 @@ def whileGrid(open_list: list[Node], closed_list: list[Node], start_node: Node, 
             #         continue # Doesn't work as expected
 
             # Create the f, g, and h values
-            child.g = current_node.g + 1
+            child.g = (current_node.g + 10)
             child.h = ((child.position.y - end_node.position.y) ** 2) + ((child.position.x - end_node.position.x) ** 2)
             child.f = child.g + child.h
 
@@ -133,20 +133,20 @@ def astar(map: list[list[int]], start: Coords, end: Coords):
 
 def main():
     maze = [
-        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]*2,
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0]*2,
+        [0, 0, 0, 0, 1, 0, 0, 1, 0, 0]*2,
     ]
 
     start = Coords(0, 0)
-    end = Coords(9, 9)
+    end = Coords(19, 0)
 
     path = astar(maze, start, end)
     if path is None: print("No path found..."); return
